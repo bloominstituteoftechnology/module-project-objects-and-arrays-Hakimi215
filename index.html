@@ -12,6 +12,90 @@
     until the Console reports all tests passing.</p>
 
   <script>
+
+
+// function striX(string) {
+//      return string.split("x")
+//     }
+//     console.log(striX("xbox"));
+
+// function pushElemen(arr, chars) {
+
+//   arr.push(chars);
+//     return arr;
+//     }
+//     let myList = ['a', 'b', 'c'];
+//     console.log('it should print a b c and 1:', pushElemen(myList, 4))
+
+// function firstOrLas(arr, isFirst) {
+//     if(isFirst){ // isFirst is checking if the index 
+//       return arr[0];
+//     } else{
+//       return arr[arr.length -1]
+//      }
+//     }
+//     let list = ['b', 'a', 5]
+
+//     console.log('what might return:', firstOrLas(list, true))
+// function loopOverChars(word){
+//   let split = word.split('')
+//   console.log(split)
+//   for (let index in split){
+//     let char = split[index];
+//     console.log(char)
+//   }
+// }
+// loopOverChars("Hakimi")
+
+// function isEvenNumOfElements(arr){
+//   let isEven = arr.length % 2 === 0;
+//   let isOdd = arr.length % 2 !== 0;
+//   if(isEven){
+//     console.log("Arry is even")
+//   } else if(isOdd) {
+//     console.log("array is odd")
+//   }
+// }
+// isEvenNumOfElements(['ll'],[2])
+
+// function getFirst(arr){
+//   return arr[0];
+// }
+// let myarray = [2, 3, 6]
+// console.log(getFirst(myarray))
+
+// function getLast(arr){
+//  return arr[arr.length -2]
+// }
+// console.log(getLast([4, 8, 9, true]));
+
+
+
+// let myObj = {
+//   name: 'Hakimi',
+//   job: 'Software Engineer',
+//   isHappy: true
+// }
+// let theArray = ['Apple', 'Orange', 'Banana'];
+// for(let i in myObj){
+//   console.log(i, myObj[i])
+// }
+
+// for(let indx in theArray){
+//   let theElement = theArray[indx];
+//   console.log(indx, theElement)
+// }
+
+
+
+
+
+
+
+
+
+
+
     // In CHALLENGEs 1-9 you will flesh out some functions
 
     // To do this, translate each 🧠 set of instructions into a working function
@@ -22,17 +106,40 @@
     // 🧠 The function buildPeter builds an object of a certain shape and returns it.
     // 🧠 Example of usage:
     // buildPeter() // should return { firstName: "Peter", lastName: "Pan", age: 12 }
-    function buildPeter() {
-
+    let peterInfo = {
+      firstName: "Peter",
+      lastName: "Pan",
+      age: 12
     }
+
+    function buildPeter() {
+     for (let index in peterInfo){
+      return peterInfo;
+     }
+    
+  }
+    buildPeter();
+
 
     // 👉 CHALLENGE 2
     // 🧠 The function buildUser takes three arguments and uses them to build an object and return it.
     // 🧠 Example of usage:
     // buildUser("John", "Smith", 30) // should return { firstName: "John", lastName: "Smith", age: 30 }
-    function buildUser(firstName, lastName, age) {
 
+    
+
+    function buildUser(firstName, lastName, age) {
+     let john = {
+      firstName: firstName,
+      lastName: lastName,
+      age: age
+     }
+     return john
     }
+    buildUser("John", "Smith" , 30)
+   
+
+
 
     // 👉 CHALLENGE 3
     // 🧠 The function deletePrice takes an object as its argument and deletes its "price" property if it exists.
@@ -42,9 +149,25 @@
     // 🧠 Examples of usage:
     // deletePrice({ item: "Tesla Model 3", price: 40000 }) // should return { item: "Tesla Model 3" }
     // deletePrice({ item: "Kobo Libra 2" }) // should return { item: "Kobo Libra 2", priceless: true }
-    function deletePrice() {
 
+
+    function deletePrice(obj){
+      if(obj.hasOwnProperty("price")){// if the obj has a price using delete obj.price delete the price
+        delete obj.price;
+      } else {
+        obj.priceless = true; // if the obj is priceless this chunk of code will execute, whice priceless is true
+      }
+      return obj
     }
+
+    let items = [{
+      item: "Tesla Model 3", price: 40000
+    }, {
+      item: "Kobo Libra 2" 
+    }];
+
+    deletePrice(items)
+  
 
     // 👉 CHALLENGE 4
     // 🧠 The function evenList takes an array as its argument and returns true if the array has an even number of elements, false otherwise.
@@ -52,9 +175,16 @@
     // 🧠 Examples of usage:
     // evenList(['a']) // should return false
     // evenList(['a', 'b']) // should return true
+    let myArry = ['55', '9'];
     function evenList(arr) {
-
+    
+      return arr.length % 2 === 0;
     }
+
+    evenList(myArry);
+    console.log("This should not be true", Boolean(evenList))
+
+
 
     // 👉 CHALLENGE 5
     // 🧠 The function firstOrLast takes an array as the first argument, and a Boolean as the second.
@@ -62,9 +192,17 @@
     // 🧠 Examples of usage:
     // firstOrLast(['a', 'b'], true) // should return 'a'
     // firstOrLast(['a', 'b'], false) // should return 'b'
-    function firstOrLast() {
-
+    function firstOrLast(arr, isFirst) {
+    if(isFirst){ // isFirst is checking if the index 0 and if it's true it will brint it. firstOrLast(['a', 'b', 'c'], true)
+      return arr[0];
+    } else{
+      return arr[arr.length -1] ///  else it will print the last index. firstOrLast(['a', 'b', 'c'], false)
+     }
     }
+
+
+
+    firstOrLast(['a', 'b', 'c'], true)
 
     // 👉 CHALLENGE 6
     // 🧠 The function pushElement takes an array as the first argument, and any value we wish as the second.
@@ -72,9 +210,12 @@
     // 🧠 Examples of usage:
     // pushElement([], 1) // should return [1]
     // pushElement(['a', 'b'], 'c') // should return ['a', 'b', 'c']
-    function pushElement() {
-
+    function pushElement(arr, chars) {
+   
+    arr.push(chars); /// arr is acting as the current array and inside the .push method we are puting basicaly our second value that we latter put.
+    return arr;
     }
+    // console.log(pushElemen(['a', 'b', 'c'],['n'] ))
 
     // 👉 CHALLENGE 7
     // 🧠 The function stripX takes a string as its argument.
@@ -88,9 +229,10 @@
     // 🧠 At each iteration of the loop, if the current character is not "x", then add it to the end of the result array.
     // 🧠 You can merge the result array back into a string by using join. Example: ["f", "o", "o"].join("") yields "foo"
     // 🧠 Do not forget to return your rejoined string!
-    function stripX() {
-
+    function stripX(string) {
+     return string.split("x").join(""); /// basicaly the string here is the word that we tye inside 
     }
+    stripX("xenomorph")
 
     // 👉 CHALLENGE 8
     // 🧠 The function stripChar takes a string as its first argument and a character as its second argument.
@@ -101,10 +243,14 @@
     // ❗ Important Notes:
     // 🧠 Try to solve this problem without looking at how you solved the previous one.
     // 🧠 If you need to look, do not copy & paste code. Take a peek and then work from memory!
-    function stripChar() {
-
+    function stripChar(str, removeChars) {
+  for (let i = 0; i < removeChars.length; i++){
+    str = str.split(removeChars[i]).join("");
+  }
+  return str;
     }
-
+    console.log(stripChar("paradox", ['x'], ['a']))
+   
     // 👉 CHALLENGE 9
     // 🧠 The function getProps takes an object as its argument.
     // 🧠 The function returns an array containing the property names of the object.
@@ -114,10 +260,19 @@
     // getProps({ lastName: "Smith", age: 35 }) // should return ["lastName"]
     // getProps({ firstName: "Jane", married: false }) // should return ["firstName"]
     // getProps({ name: "Bamby", favFood: "flowers" }) // should return ["name", "favFood"]
-    function getProps() {
-
+    function getProps(obj) {
+    let props = Object.keys(obj);
+    let filteredProb = [];
+    for(let index = 0; index < props.length; index++){
+      let propName = props[index];
+      if(propName!== "age" && propName !== "married"){
+        filteredProb.push(propName);
+      }
+     }
+     return filteredProb;
     }
 
+    console.log(getProps({ firstName: "Jane", married: false }))
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
     // 🧪 TESTS, do not work below this line
